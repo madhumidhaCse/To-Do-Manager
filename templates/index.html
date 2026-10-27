@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Todo Manager</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app-window">
+    <nav class="menu-bar" aria-label="Application menu">
+      <div class="menu-brand">Todo Manager</div>
+      <div class="menu-items">
+        <button type="button" class="menu-item" data-menu="File">File</button>
+        <button type="button" class="menu-item" data-menu="Edit">Edit</button>
+        <button type="button" class="menu-item" data-menu="View">View</button>
+        <button type="button" class="menu-item" data-menu="Window">Window</button>
+        <button type="button" class="menu-item" data-menu="Help">Help</button>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <h1><span class="hero-icon" aria-hidden="true">✓</span> TO-DO Manager</h1>
+    </header>
+
+    <main class="content">
+      <form id="task-form" class="task-form">
+        <label class="task-input-wrap">
+          <span class="pencil-icon" aria-hidden="true">✎</span>
+          <span class="visually-hidden">Task name</span>
+          <input id="task-title" name="title" type="text" maxlength="255"
+                 placeholder="Enter your task here..." autocomplete="off" required>
+        </label>
+        <label class="priority-wrap">
+          <span class="visually-hidden">Priority</span>
+          <select id="task-priority" name="priority">
+            <option value="Medium">Priority</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </label>
+        <button class="save-button" type="submit">SAVE <span aria-hidden="true">➜</span></button>
+      </form>
+
+      <div class="section-heading">
+        <h2>Todo Items</h2>
+        <span id="task-count" class="task-count">0 tasks</span>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th class="serial-col">SL</th>
+              <th>Todo</th>
+              <th>Date</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th class="actions-col">#</th>
+            </tr>
+          </thead>
+          <tbody id="task-list">
+            <tr><td colspan="6" class="loading-cell">Loading tasks...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p id="message" class="message" role="status" aria-live="polite"></p>
+    </main>
+  </div>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
